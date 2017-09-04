@@ -1,0 +1,29 @@
+main{
+  width: 80%;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.images-list{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  article {
+    @include flex(column, center, center);
+
+    border: 2px solid #333333;
+    margin: 10px;
+  }
+}
+
+@supports not (display: grid) {
+  main{
+    text-align: center;
+  }
+  .images-list article {
+    display: inline-block;
+    height: 22%;
+    width: 22%;
+  }  
+}

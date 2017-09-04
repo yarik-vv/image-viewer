@@ -7,7 +7,7 @@
 a {
   text-decoration: none;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 }
@@ -21,9 +21,21 @@ button {
   }
 }
 
+h3, h4{
+  font-weight: normal;
+}
+
 body {
   @include flex(column, flex-start, center);
 
   font-family: $font;
   color: #333333;
+  height: 100vh;
+}
+
+.content{
+  @include flex(row, flex-start, stretch);
+
+  width: 100%;
+  height: 100%;
 }
