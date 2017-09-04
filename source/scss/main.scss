@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+button {
+  background: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+body {
+  @include flex(column, flex-start, center);
+
+  font-family: $font;
+  color: #333333;
+}
