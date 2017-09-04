@@ -62,7 +62,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(__dirname + '/build/*'),
     new HtmlWebpackPlugin({
-      chunks: ['custom'],
+      //chunks: ['custom'],
       filename: 'index.html',
       template: 'index.ejs'
     }),
@@ -78,7 +78,7 @@ module.exports = {
     watchContentBase: true,
     compress: true,
     inline: true,
-    hot: true
+    hot: false
   }
 };
 
