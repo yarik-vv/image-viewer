@@ -28,6 +28,7 @@ h3, h4{
 body {
   @include flex(column, flex-start, center);
 
+  min-width: 1300px;
   font-family: $font;
   color: #333333;
   height: 100vh;
