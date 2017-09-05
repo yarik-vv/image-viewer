@@ -1,0 +1,17 @@
+#pagination{
+  @include flex(row, flex-start, center);
+
+  list-style-type: none;
+  
+  li{
+    @include flex(row, center, center);
+    width: 30px;
+    height: 30px;
+    background: gainsboro;
+    border: 1px solid black;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 //сам ajax запрос
 function AJAXrequest(url, method) {
-  return new Promise(function(resolve, reject) {
+  return new Promise( (resolve, reject) => {
     var request = new XMLHttpRequest();
 
     //обработываем ответ
