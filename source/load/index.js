@@ -1,4 +1,4 @@
-import pagination from '../pagination';
+import { pagination, prevPage, nextPage } from '../pagination';
 
 const list = document.getElementById('list');
 const authorList = document.getElementById('authors');
@@ -59,10 +59,25 @@ function loadAuthors(data, start) {
 
 function loadPagination(data) {
   paginationBlock.innerHTML = '';
-  let s = 1;
   
+  let s = 1;
+//  
+  // if(data.length < 100){
+  //   document.getElementById('prev').style.display = 'none';
+  // } else {
+    document.getElementById('prev').onclick = event => {
+      prevPage();
+    };
+    document.getElementById('next').onclick = event => {
+      nextPage();
+    };
+ // }
+//
   for (let i = 0; i < data.length; i += 20) {
     let newPage = document.createElement('li');
+    if(s > 5){
+      newPage.style.display = 'none';
+    }
     newPage.id = i;
     newPage.innerText = s;
     s++;
@@ -72,6 +87,7 @@ function loadPagination(data) {
     };
     paginationBlock.appendChild(newPage);
   }
+  paginationBlock.childNodes[0].className = 'active-page';
 }
 
 export { loadImages, loadAuthors, loadPagination };

@@ -25,6 +25,10 @@ h3, h4{
   font-weight: normal;
 }
 
+ul{
+  list-style-type: none;
+}
+
 body {
   @include flex(column, flex-start, center);
 

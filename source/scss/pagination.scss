@@ -1,17 +1,33 @@
-#pagination{
-  @include flex(row, flex-start, center);
+.pagination{
+  @include flex(row, center, center);
 
-  list-style-type: none;
-  
-  li{
+  //border: 1px solid black;
+  margin: 20px 0 40px 0;
+
+  ul{
+    @include flex(row, flex-start, center);
+  }
+
+  button, li{
     @include flex(row, center, center);
+    
     width: 30px;
     height: 30px;
+    font-size: 16px;
     background: gainsboro;
     border: 1px solid black;
+    border-right: none; 
 
     &:hover{
       cursor: pointer;
     }
+  }
+
+  .active-page{
+    background: gray;
+    color: white;
+  }
+  #next{
+    border-right: 1px solid black;
   }
 }
