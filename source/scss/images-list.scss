@@ -9,10 +9,10 @@ main{
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
 
-  article {
-    @include flex(column, center, center);
-
+  img {
     border: 2px solid #333333;
+    max-width: 90%;
+    max-height: 90%;
     margin: 10px;
   }
 }
@@ -21,7 +21,7 @@ main{
   main{
     text-align: center;
   }
-  .images-list article {
+  .images-list img {
     display: inline-block;
     height: 22%;
     width: 22%;
