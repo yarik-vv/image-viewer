@@ -2,33 +2,84 @@
 
 import scss from './scss/index.scss';
 import AJAXrequest from './request';
-import loadImages from './loadImages';
-import sort from './sort';
+import { loadImages, loadAuthors } from './load'; 
+import { filterSize, filterAuthor } from './filters';
 
-var images = null;
+const filter = document.getElementById('filter-size');
+const authorFilter = document.getElementById('authors');
+
+let originalData = null;
+let lastData = null;
+let currentData = null;
+
+function initData(newData){
+  lastData = currentData;
+  currentData = newData;
+  console.log('dannie pomenal', currentData);
+}
+
 AJAXrequest('https://unsplash.it/list', 'GET').then(
   function(result) {
-    images = JSON.parse(result);
-    images.splice(0, 357);
-    loadImages(images, 0);
-    console.log(images)
+    originalData = JSON.parse(result);
+    originalData.splice(0, 357);
+    initData(originalData);
+
+    loadImages(currentData, 0);
+    loadAuthors(currentData, 0);
+    filterSize(document.getElementById('large'), currentData);
+
+    for (let i = 0; i < filter.childNodes.length; i++) {
+      if(i%2 !== 0){
+        //console.log(filter.childNodes[i]);
+        filter.childNodes[i].onclick = function (event){
+          filterSize(event.target, originalData);
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   },
   function(error) {
     console.log(error);
   }
 );
 
-// function sort(){
-//   console.log('kek');
+//init filter images
+// for (let i = 0; i < filter.childNodes.length; i++) {
+//   if(i%2 !== 0){
+//     //console.log(filter.childNodes[i]);
+//     filter.childNodes[i].onclick = function (event){
+//       filterSize(event.target, original);
+//     }
+//   }
 // }
 
-const filter = document.getElementById('filterSize');
-//console.log(filter.childNodes);
-for (let i = 0; i < filter.childNodes.length; i++) {
-  if(i%2 !== 0){
-    console.log(filter.childNodes[i]);
-    filter.childNodes[i].onclick = function (event){
-      sort(event.target.id, images);
-    }
-  }
-}
+//init filter images
+// for (let i = 0; i < authorFilter.childNodes.length; i++) {
+//   if(i%2 !== 0){
+//     console.log(authorFilter.childNodes[i]);
+//     authorFilter.childNodes[i].onclick = function (event){
+//       filterSize(event.target.className, images);
+//     }
+//   }
+// }
+
+export default initData;

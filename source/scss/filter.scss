@@ -22,5 +22,36 @@ aside{
   .size, 
   .author{
     margin-left: 5px;
+
+
+  }
+}
+
+#authors{
+  list-style-type: none;
+  
+  li {
+    @include flex(row, flex-start, center);
+
+    margin: 5px 0 0 10px;
+  
+    input{
+      margin-right: 5px;
+    }
+  }
+}
+
+#filter-size{
+  @include flex(column, center, flex-start);
+  list-style-type: none;
+
+  li {
+    @include flex(row, flex-start, center);
+
+    margin: 5px 0 0 10px;
+  
+    input{
+      margin-right: 5px;
+    }
   }
 }
