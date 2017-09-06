@@ -1,11 +1,10 @@
 import { loadImages, loadAuthors, loadPagination } from '../load';
 const paginationBlock = document.getElementById('pagination');
-//const currentPage = document.querySelector('.active-page');
 
 function pagination(page, data) {
   loadImages(data, +page.id);
 
-  if(page.nextSibling === null || page.nextSibling.nextSibling === null){
+  if (page.nextSibling === null || page.nextSibling.nextSibling === null) {
     document.querySelector('.active-page').className = ' ';
     page.className = 'active-page';
     return;
@@ -13,34 +12,32 @@ function pagination(page, data) {
   let last = page.nextSibling.nextSibling;
   let first = null;
 
-  if(page.previousSibling !== null){
+  if (page.previousSibling !== null) {
     first = page.previousSibling.previousSibling;
   }
 
-
-  if(page.previousSibling !== null && page.previousSibling.style.display === 'none'){
-    page.previousSibling.style.display = 'flex';
-    if(first !== null){
+  if (page.previousSibling !== null && page.previousSibling.style.display === 'none') {
+    page.previousSibling.style.display = 'flex';   
+    if (first !== null) {
       first.style.display = 'flex';
-      last.nextSibling.style.display = 'none';   
+      last.nextSibling.style.display = 'none';
     }
-    last.nextSibling.nextSibling.style.display = 'none'; 
+    last.nextSibling.nextSibling.style.display = 'none';
   }
 
-  if(first !== null && first.style.display === 'none' ){
+  if (first !== null && first.style.display === 'none') {
     page.previousSibling.style.display = 'flex';
     first.style.display = 'flex';
     last.nextSibling.style.display = 'none';
     last.nextSibling.nextSibling.style.display = 'none';
   }
 
-  if(last.style.display === 'none'){
+  if (last.style.display === 'none') {
     first.previousSibling.style.display = 'none';
     last.style.display = 'flex';
   }
 
-  if(page.nextSibling.style.display === 'none'){
-    console.log('5 et');
+  if (page.nextSibling.style.display === 'none') {
     first.previousSibling.previousSibling.style.display = 'none';
     first.previousSibling.style.display = 'none';
     last.style.display = 'flex';
@@ -54,11 +51,11 @@ function pagination(page, data) {
 function prevPage() {
   let currentPage = document.querySelector('.active-page');
 
-  if(currentPage.previousSibling !== null){
-    let first = currentPage.previousSibling.previousSibling//.previousSibling;
-    let last = currentPage.nextSibling;//.nextSibling;
+  if (currentPage.previousSibling !== null) {
+    let first = currentPage.previousSibling.previousSibling;
+    let last = currentPage.nextSibling;
 
-    if(+currentPage.id > 20 && first.previousSibling !== null){
+    if (+currentPage.id > 20 && first.previousSibling !== null) {
       last.nextSibling.style.display = 'none';
       first.previousSibling.style.display = 'flex';
     }
@@ -72,11 +69,11 @@ function prevPage() {
 function nextPage() {
   let currentPage = document.querySelector('.active-page');
 
-  if(currentPage.nextSibling !== null){
+  if (currentPage.nextSibling !== null) {
     let prev = currentPage.previousSibling;
-    let last = currentPage.nextSibling.nextSibling;//.nextSibling;
+    let last = currentPage.nextSibling.nextSibling;
 
-    if(+currentPage.id > 20 && prev.previousSibling !== null){
+    if (+currentPage.id > 20 && prev.previousSibling !== null) {
       prev.previousSibling.style.display = 'none';
       last.nextSibling.style.display = 'flex';
     }

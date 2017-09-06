@@ -2,15 +2,20 @@
   @include flex(row, center, center);
 
   //border: 1px solid black;
-  margin: 20px 0 40px 0;
+  //margin-top: 20px;
+  height: 80px;
+  //border: 1px solid black;
+  //border-radius: 10px;
 
   ul{
     @include flex(row, flex-start, center);
+
+    li{
+      @include flex(row, center, center);
+    }
   }
 
   button, li{
-    @include flex(row, center, center);
-    
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -28,6 +33,12 @@
     color: white;
   }
   #next{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     border-right: 1px solid black;
+  }
+  #prev{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
   }
 }
