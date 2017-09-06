@@ -6,8 +6,9 @@ const list = document.getElementById('list');
 const authorList = document.getElementById('authors');
 const paginationBlock = document.getElementById('pagination');
 
+//функция загрузки сообщений
 function loadImages(data, start) {
-  //если по какой-то причине нету, то выдаем ошибку
+  //если по какой-то причине данных нету, то выдаем ошибку
   if (data.length === 0) {
     list.innerHTML = '<h3 class="error">Ошибка при загрузке содержимого...</h3>';
     return;
@@ -21,6 +22,7 @@ function loadImages(data, start) {
       return;
     }
 
+    //добавляем изображение
     let newImage = document.createElement('img');
     newImage.src = 'https://unsplash.it/' + data[i].filename;
     newImage.className = 'list-item';
@@ -30,14 +32,14 @@ function loadImages(data, start) {
   }
 }
 
+//функция загрузки авторов
 function loadAuthors(data, start) {
-  //если по какой-то причине нету, то выходим
+  //если по какой-то причине данных нету, то выходим
   if (data.length === 0) {
     return;
   }
 
   let authors = [];
-  //let tempData = data;
   authorList.innerHTML = '';
 
   for (let i = start; i < start + 20; i++) {
@@ -46,6 +48,7 @@ function loadAuthors(data, start) {
       return;
     }
 
+    //поиск автора и добавление если еще не был добавлен
     let regexp = new RegExp(data[i].author);
     let str = authors.toString();
 
@@ -60,16 +63,10 @@ function loadAuthors(data, start) {
       }
       authorList.appendChild(newAuthor);
     }
-
-
-    // for (let i = 0; i < authorFilter.childNodes.length; i++) {
-    //   authorFilter.childNodes[i].firstChild.onclick = event => {
-    //     filterAuthor(newImages);
-    //   };
-    // }
   }
 }
 
+//загрузка страниц в переключатель
 function loadPagination(data) {
   let s = 1;
   paginationBlock.innerHTML = '';

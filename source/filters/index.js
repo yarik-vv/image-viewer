@@ -2,6 +2,7 @@ import { loadImages, loadAuthors, loadPagination } from '../load';
 
 const authorFilter = document.getElementById('authors');
 
+//фильтр по размеру
 function filterSize(selected, data) {
   let newImages = [];
 
@@ -18,24 +19,17 @@ function filterSize(selected, data) {
   loadImages(newImages, 0);
   loadPagination(newImages);
   loadAuthors(newImages, 0);
-
-  // for (let i = 0; i < authorFilter.childNodes.length; i++) {
-  //   authorFilter.childNodes[i].firstChild.onclick = event => {
-  //     filterAuthor(newImages);
-  //   };
-  // }
 }
 
+//фильтр по авторам
 function filterAuthor(data, start) {
   let newImages = [];
   let checked = 0;
 
-  console.log(data.length);
   for (let i = 0; i < authorFilter.childNodes.length; i++) {
     if (authorFilter.childNodes[i].firstChild.checked) {
       checked++;
       for (let s = start; s < start + 20; s++) {
-        //console.log(data[s]);
         if (data[s] !== undefined) {
           if (authorFilter.childNodes[i].firstChild.value === data[s].author) {
             newImages.push(data[s]);
@@ -47,10 +41,8 @@ function filterAuthor(data, start) {
 
   if (checked === 0) {
     loadImages(data, start);
-    //loadPagination(newImages);
   } else {
     loadImages(newImages, 0);
-    //loadPagination(newImages);
   }
 }
 

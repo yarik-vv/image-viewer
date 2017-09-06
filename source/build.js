@@ -12,15 +12,17 @@ let currentData = null;
 
 AJAXrequest('https://unsplash.it/list', 'GET').then(
   result => {
+    //получаем и парсим данные
     originalData = JSON.parse(result);
     originalData.splice(0, 357);
-    console.log(originalData);
     currentData = originalData;
 
+    //загружаем изображения, страницы и список авторов
     loadImages(currentData, 0);
     loadPagination(currentData);
     loadAuthors(currentData, 0);
 
+    //фильтруем по размеру и вешаем событие на блок сортировки
     filterSize(document.getElementById('large').id, currentData);
     for (let i = 0; i < filterSizeBlock.childNodes.length; i++) {
       if (i % 2 !== 0) {

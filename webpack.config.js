@@ -57,11 +57,6 @@ module.exports = {
           fallback: 'style',
           use: ['css', 'postcss', 'sass']
         })
-      },
-      {
-        test: /\.(json|png|jpg|otf|ttf|eot|woff|woff2|svg)$/,
-        exclude: /(node_modules)/,
-        loader: 'file-loader?name=[path][name].[ext]'
       }
     ]
   },
@@ -73,9 +68,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(__dirname + '/build/*'),
     new HtmlWebpackPlugin({
-      //chunks: ['custom'],
       filename: 'index.html',
-      template: 'index.ejs'
+      template: 'index.html',
     }),
     new ExtractTextPlugin({
       filename: 'styles.css',
@@ -93,7 +87,6 @@ module.exports = {
   }
 };
 
-
 if (NODE_ENV == 'production') {
   module.exports.plugins.push(
     new webpack.LoaderOptionsPlugin({
@@ -103,31 +96,6 @@ if (NODE_ENV == 'production') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    new HtmlWebpackPlugin({
-      chunks: ['custom'],
-      filename: 'index.html',
-      template: 'index.ejs',
-      minify: {
-        minifyCSS:true,
-        minifyJS:true,
-        useShortDoctype: true,
-        removeAttributeQuotes: true,
-        removeComments:true,
-        collapseWhitespace: true,
-        collapseInlineTagWhitespace: true,
-        collapseBooleanAttributes: true,
-        removeEmptyAttributes: true,
-        caseSensitive: true,
-        sortAttributes: true,
-        sortClassName: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        removeRedundantAttributes: true,
-        keepClosingSlash: true,
-        minifyURLs: true,
-        preventAttributesEscaping: true
       }
     }),
     new StyleExtHtmlWebpackPlugin('styles.css'),

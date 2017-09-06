@@ -1,43 +1,39 @@
-.pagination{
+.pagination {
   @include flex(row, center, center);
-
-  //border: 1px solid black;
-  //margin-top: 20px;
   height: 80px;
-  //border: 1px solid black;
-  //border-radius: 10px;
 
-  ul{
+  ul {
     @include flex(row, flex-start, center);
 
-    li{
+    li {
       @include flex(row, center, center);
     }
   }
 
-  button, li{
+  button,
+  li {
     width: 30px;
     height: 30px;
     font-size: 16px;
     background: gainsboro;
     border: 1px solid black;
-    border-right: none; 
+    border-right: none;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
 
-  .active-page{
+  .active-page {
     background: gray;
     color: white;
   }
-  #next{
+  #next {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-right: 1px solid black;
   }
-  #prev{
+  #prev {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }

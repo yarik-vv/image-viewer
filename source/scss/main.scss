@@ -21,11 +21,12 @@ button {
   }
 }
 
-h3, h4{
+h3,
+h4 {
   font-weight: normal;
 }
 
-ul{
+ul {
   list-style-type: none;
 }
 
@@ -39,7 +40,7 @@ body {
   height: 100vh;
 }
 
-.content{
+.content {
   @include flex(row, flex-start, stretch);
 
   width: 100%;

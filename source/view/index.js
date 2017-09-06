@@ -25,9 +25,8 @@ function view(imageUrl) {
   closeButton(viewBlock, wrap);
 }
 
-
+//функция загрузки кнопки
 function closeButton(view, wrap){
-  //console.log('tut');
   let button = document.createElement('button');
   button.id = 'close';
   button.onclick = () => {

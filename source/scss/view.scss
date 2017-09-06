@@ -1,48 +1,39 @@
-#wrap{
-  //@include flex(row, flex-end);
-
-
+#wrap {
   background: black;
   opacity: 0.8;
   padding: 20px 40px;
   z-index: 1;
-
 }
 
-#view{
+#view {
   @include flex(row, center, center);
   z-index: 2;
   padding: 20px;
 
-  img{
+  img {
     border-radius: 3px;
-    //width: 100%;
     height: 100%;
   }
 
-  button{
-    //position: relative;
+  button {
     align-self: flex-start;
-    // left: -30px;
-    // top: 10px;
     margin-left: 10px;
 
-    svg{
+    svg {
       fill: white;
-      &:hover{
+      &:hover {
         fill: red;
       }
-    } 
+    }
   }
 }
 
-#wrap, #view{
+#wrap,
+#view {
   display: none;
   position: absolute;
   left: 0;
   height: 0;
-  //z-index: 1;
   width: 100%;
   height: 100%;
-  //background: black;
 }

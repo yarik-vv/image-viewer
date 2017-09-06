@@ -1,10 +1,10 @@
 import { loadImages, loadAuthors, loadPagination } from '../load';
 const paginationBlock = document.getElementById('pagination');
 
+//функция выбора страницы
 function pagination(page, data) {
   loadImages(data, +page.id);
   loadAuthors(data, +page.id);
-
 
   if (page.nextSibling === null || page.nextSibling.nextSibling === null) {
     document.querySelector('.active-page').className = ' ';
@@ -18,6 +18,7 @@ function pagination(page, data) {
     first = page.previousSibling.previousSibling;
   }
 
+  //проверка на 1 елемент
   if (page.previousSibling !== null && page.previousSibling.style.display === 'none') {
     page.previousSibling.style.display = 'flex';   
     if (first !== null) {
@@ -26,19 +27,19 @@ function pagination(page, data) {
     }
     last.nextSibling.nextSibling.style.display = 'none';
   }
-
+  //проверка на 2 елемент
   if (first !== null && first.style.display === 'none') {
     page.previousSibling.style.display = 'flex';
     first.style.display = 'flex';
     last.nextSibling.style.display = 'none';
     last.nextSibling.nextSibling.style.display = 'none';
   }
-
+  //проверка на 4 елемент
   if (last.style.display === 'none') {
     first.previousSibling.style.display = 'none';
     last.style.display = 'flex';
   }
-
+  //проверка на 5 елемент
   if (page.nextSibling.style.display === 'none') {
     first.previousSibling.previousSibling.style.display = 'none';
     first.previousSibling.style.display = 'none';
@@ -50,6 +51,7 @@ function pagination(page, data) {
   page.className = 'active-page';
 }
 
+//функция переключения страницы назад
 function prevPage() {
   let currentPage = document.querySelector('.active-page');
 
@@ -68,6 +70,7 @@ function prevPage() {
   }
 }
 
+//функция переключения страницы вперед
 function nextPage() {
   let currentPage = document.querySelector('.active-page');
 
