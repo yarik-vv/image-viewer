@@ -3,6 +3,8 @@ const paginationBlock = document.getElementById('pagination');
 
 function pagination(page, data) {
   loadImages(data, +page.id);
+  loadAuthors(data, +page.id);
+
 
   if (page.nextSibling === null || page.nextSibling.nextSibling === null) {
     document.querySelector('.active-page').className = ' ';

@@ -19,34 +19,39 @@ function filterSize(selected, data) {
   loadPagination(newImages);
   loadAuthors(newImages, 0);
 
-  for (let i = 0; i < authorFilter.childNodes.length; i++) {
-    authorFilter.childNodes[i].firstChild.onclick = event => {
-      filterAuthor(newImages);
-    };
-  }
+  // for (let i = 0; i < authorFilter.childNodes.length; i++) {
+  //   authorFilter.childNodes[i].firstChild.onclick = event => {
+  //     filterAuthor(newImages);
+  //   };
+  // }
 }
 
-function filterAuthor(data) {
+function filterAuthor(data, start) {
   let newImages = [];
   let checked = 0;
 
+  console.log(data.length);
   for (let i = 0; i < authorFilter.childNodes.length; i++) {
     if (authorFilter.childNodes[i].firstChild.checked) {
       checked++;
-      for (let s = 0; s < data.length; s++) {
-        if (authorFilter.childNodes[i].firstChild.value === data[s].author) {
-          newImages.push(data[s]);
+      for (let s = start; s < start + 20; s++) {
+        //console.log(data[s]);
+        if (data[s] !== undefined) {
+          if (authorFilter.childNodes[i].firstChild.value === data[s].author) {
+            newImages.push(data[s]);
+          }
         }
       }
     }
   }
 
   if (checked === 0) {
-    newImages = data;
+    loadImages(data, start);
+    //loadPagination(newImages);
+  } else {
+    loadImages(newImages, 0);
+    //loadPagination(newImages);
   }
-
-  loadImages(newImages, 0);
-  loadPagination(newImages);
 }
 
 export { filterSize, filterAuthor };

@@ -1,4 +1,5 @@
 import { pagination, prevPage, nextPage } from '../pagination';
+import { filterSize, filterAuthor } from '../filters';
 import view from '../view';
 
 const list = document.getElementById('list');
@@ -36,6 +37,7 @@ function loadAuthors(data, start) {
   }
 
   let authors = [];
+  //let tempData = data;
   authorList.innerHTML = '';
 
   for (let i = start; i < start + 20; i++) {
@@ -53,8 +55,18 @@ function loadAuthors(data, start) {
       let newAuthor = document.createElement('li');
       newAuthor.innerHTML = '<input type="checkbox" name="filterAuthor" value="' +
                             data[i].author + '">' + data[i].author;
+      newAuthor.firstChild.onclick = event => {
+        filterAuthor(data, start);
+      }
       authorList.appendChild(newAuthor);
     }
+
+
+    // for (let i = 0; i < authorFilter.childNodes.length; i++) {
+    //   authorFilter.childNodes[i].firstChild.onclick = event => {
+    //     filterAuthor(newImages);
+    //   };
+    // }
   }
 }
 
