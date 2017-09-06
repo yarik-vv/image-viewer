@@ -40,6 +40,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        include: __dirname + '/',
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015']
+          }
+        }]
+      },
+      {
         test: /\.scss$/,
         include: __dirname + '/source',
         use: ExtractTextPlugin.extract({
