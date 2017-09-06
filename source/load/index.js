@@ -1,4 +1,5 @@
 import { pagination, prevPage, nextPage } from '../pagination';
+import view from '../view';
 
 const list = document.getElementById('list');
 const authorList = document.getElementById('authors');
@@ -23,7 +24,7 @@ function loadImages(data, start) {
     newImage.src = 'https://unsplash.it/' + data[i].filename;
     newImage.className = 'list-item';
     newImage.id = data[i].id;
-
+    newImage.onclick = () => view(newImage.src);
     list.appendChild(newImage);
   }
 }
@@ -58,21 +59,16 @@ function loadAuthors(data, start) {
 }
 
 function loadPagination(data) {
-  paginationBlock.innerHTML = '';
-  
   let s = 1;
-//  
-  // if(data.length < 100){
-  //   document.getElementById('prev').style.display = 'none';
-  // } else {
-    document.getElementById('prev').onclick = event => {
-      prevPage();
-    };
-    document.getElementById('next').onclick = event => {
-      nextPage();
-    };
- // }
-//
+  paginationBlock.innerHTML = '';
+
+  document.getElementById('prev').onclick = event => {
+    prevPage();
+  }
+  document.getElementById('next').onclick = event => {
+    nextPage();
+  }
+
   for (let i = 0; i < data.length; i += 20) {
     let newPage = document.createElement('li');
     if(s > 5){

@@ -14,6 +14,7 @@ AJAXrequest('https://unsplash.it/list', 'GET').then(
   result => {
     originalData = JSON.parse(result);
     originalData.splice(0, 357);
+    console.log(originalData);
     currentData = originalData;
 
     loadImages(currentData, 0);
@@ -21,9 +22,7 @@ AJAXrequest('https://unsplash.it/list', 'GET').then(
     loadAuthors(currentData, 0);
 
     filterSize(document.getElementById('large').id, currentData);
-
     for (let i = 0; i < filterSizeBlock.childNodes.length; i++) {
-      
       if (i % 2 !== 0) {
         filterSizeBlock.childNodes[i].firstChild.onclick = event => {
           filterSize(event.target.id, originalData);
